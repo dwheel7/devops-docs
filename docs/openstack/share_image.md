@@ -2,6 +2,15 @@
 
 You can share an image from your project with a collaborator in a different project in OpenStack cloud so you can both launch instances using the same image.  As the owner of the image, you can revoke the sharing privilege at any time.  You can also use these methods to share an image with yourself in other projects, just think of yourself as the collaborator.
 
+## Image Visibility Descriptions
+
+| Visibility | Description |
+| ---------- | ----------- |
+| public  | Any user may read the image and its data payload.  Additionally, the image appears in the default image list of all users. **If you need your image to be public level, it will require a support request** |
+| community | Any user may read the image and its data payload, but the image does not appear in the default image list of any user other than the owner. |
+| shared | Only the owner and the specific image members who have been added to the image may read the image or its data payload. The image appears in the default image list of the owner. It also appears in the default image list of members who have accepted the image. Non-owners, however, will not have access to the image until they are added as image members. |
+| private (**default**) | Only the owner image may read the image or its data payload. Additionally, the image appears in the owner’s default image list. |
+
 **Prerequisites:**
 
 - You will need to set up the OpenStack CLI to work with the project where the image to be shared is located.
@@ -94,5 +103,13 @@ Community images do not appear in the default image lists.
     ```shell
     openstack image list --community
     ```
+
+## Share an Image Using OpensStack UI
+
+- In the [web interface](https://cloud.rc.uab.edu) you will navigate the dropdown to Compute then select Images ![compute dropdown showing the selected images tab](image-1.png)
+
+- From here locate the image you would like to share and locate the dropdown labeled `Launch` and click in to the dropdown menu there ![image showing the Launch button and dropdown arrow](image-2.png)
+
+- In the dropdown menu select  `Edit Image` and then in the popup you will be given the choice to change the visibility ![visibility levels in openstack edit menu](image.png)
 
 If you need to withdraw a community image, you can change its visibility back to "private" or delete it.
